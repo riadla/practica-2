@@ -9,9 +9,16 @@
         display: block;
       }
     </style>
-    <paper-input label="Nombre"  required></paper-input>
-    <paper-button raised > Enviar</paper-button>
-    <paper-button raised>Cancelar</paper-button>
+    <paper-input 
+l     label="Nombre"
+      type="text"
+      
+      auto-validate
+      error-message="Nombre no valido"
+      value="{{nombre}}"
+      required></paper-input>
+    <paper-button raised on-click="save" > Enviar</paper-button>
+    <paper-button raised on-click="cancel">Cancelar</paper-button>
   </template>
 
   <script>
@@ -27,11 +34,22 @@
       static get is() { return 'practica-uno'; }
       static get properties() {
         return {
-          prop1: {
+          nombre: {
             type: String,
-            value: 'practica-uno'
+            notify: true,
+            reflectToAttribute: true
           }
         };
+      }
+
+      save() {
+        this.dispatchEvent(new CustomEvent('save-custom-event',
+          { detail: this.nombre, bubbles: true, composed: true }));
+      }
+
+      cancel() {
+        this.dispatchEvent(new CustomEvent('cancel-custom-event',
+          { detail: 'btn-cancel', bubbles: true, composed: true }));
       }
     }
 
