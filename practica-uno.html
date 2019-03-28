@@ -1,0 +1,40 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<dom-module id="practica-uno">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-input label="Nombre"  required></paper-input>
+    <paper-button raised > Enviar</paper-button>
+    <paper-button raised>Cancelar</paper-button>
+  </template>
+
+  <script>
+    /**
+     * `practica-uno`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PracticaUno extends Polymer.Element {
+      static get is() { return 'practica-uno'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'practica-uno'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PracticaUno.is, PracticaUno);
+  </script>
+</dom-module>
